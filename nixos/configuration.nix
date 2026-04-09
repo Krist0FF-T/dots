@@ -95,6 +95,9 @@
     };
   };
 
+  services.power-profiles-daemon.enable = true; 
+  powerManagement.cpuFreqGovernor = "performance";
+
   # ---------- low editing frequency ----------
 
   services.gvfs.enable = true;
