@@ -122,6 +122,20 @@
     enable = true;
   };
 
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
+
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+  };
+  xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
