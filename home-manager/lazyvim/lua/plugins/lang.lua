@@ -36,6 +36,7 @@ return {
                 },
                 clangd = {},
                 rust_analyzer = {},
+                astro = {},
                 nil_ls = {},
                 qmlls = {
                     enabled = true,

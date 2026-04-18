@@ -117,6 +117,7 @@
       stylua
       shfmt
       kdePackages.qtdeclarative # for QML LS
+      astro-language-server
       nil # nix ls
     ];
   };
