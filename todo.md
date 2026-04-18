@@ -19,6 +19,7 @@ to install
 - [x] element
 - [ ] nix-managed dotfiles
 - [ ] home-manager switch with nixos rebuild
+- [x] home-manager switch with nixos rebuild
 
 
 to try

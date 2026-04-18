@@ -7,8 +7,10 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+        url = "github:nix-community/home-manager/release-25.11";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -18,40 +20,31 @@
     home-manager,
     ...
   } @ inputs: let
+    system = "x86_64-linux";
+
+    baseModule = {
+      imports = [
+        home-manager.nixosModules.default
+      ];
+      nixpkgs.overlays = [
+        (final: _prev: {
+          # (e.g. pkgs.unstable.neovim)
+          unstable = import nixpkgs-unstable { inherit system; };
+        })
+      ];
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+    };
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
-      gyik-hp = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        # > Our main nixos configuration file <
+      "gyik-hp" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         modules = [
-          inputs.home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = [(final: _prev: {
-              # hyprland = nixpkgs-unstable.
-              unstable = import nixpkgs-unstable {
-                system = final.system;
-              };
-            })];
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
+          baseModule
           ./nixos/configuration.nix
         ];
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "gyk@gyik-hp" = home-manager.lib.homeManagerConfiguration {
-        # Home-manager requires 'pkgs' instance
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure 
-        extraSpecialArgs = {inherit inputs;};
-        # > Our main home-manager configuration file <
-        modules = [./home-manager/home.nix];
       };
     };
   };

@@ -20,6 +20,8 @@
     # packages = with pkgs; [ ];
   };
 
+  home-manager.users.gyk = import ../home-manager/home.nix;
+
   programs.nix-ld.enable = true;
 
   programs.firefox.enable = true;
