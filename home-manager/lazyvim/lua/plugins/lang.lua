@@ -36,6 +36,7 @@ return {
                 },
                 clangd = {},
                 rust_analyzer = {},
+                nil_ls = {},
                 qmlls = {
                     enabled = true,
                     -- filetypes = { "qml" },
