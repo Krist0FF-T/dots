@@ -153,6 +153,39 @@
     package = pkgs.unstable.tailscale;
   };
 
+  # See https://nixos.wiki/wiki/Samba
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+        # ..
+        "hosts allow" = "100. 192.168.0. 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+      "public" = {
+        "path" = "/home/gyk/share";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Budapest";
 
