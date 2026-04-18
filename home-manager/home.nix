@@ -2,7 +2,6 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -19,60 +18,64 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    element-desktop
-    newsboat
+    element-desktop # Matrix client
+    newsboat # RSS reader
 
     # creative
-    godot
-    blender
+    # godot
+    # blender
     kdePackages.kdenlive
     krita
     audacity
     gimp
-    openutau
+    openutau # open singing synth, supports DiffSinger
 
     # media
-    zathura
+    zathura # pdf reader
     mpv
-    vimiv-qt
+    vimiv-qt # vim-like image viewer
     libreoffice-fresh
     mpc ncmpcpp rmpc # mpd stuff (new to it)
     ffmpeg
     yt-dlp
-    ani-cli
+    playerctl
 
     python313Packages.ipython
-    uv
+    uv # python
     cloc # count lines of code
     nushell
+
     tree
     file
+    eza # ls alternative
+    sshfs # mount over ssh
 
-    libqalculate # provides qalc
+    libqalculate # provides qalc (calculator)
     khal # calendar
+    python313Packages.qrcode # qr code gen
+    zellij # tmux alternative
 
     fastfetch
     microfetch
-
-    eza
-    cava
 
     # fun stuff
     cowsay
     # sl figlet toilet lolcat
 
-    # other
+    quickshell
     pavucontrol
     gnome-clocks
     libnotify
-    dunst
+    dunst # notification daemon, will replace with quickshell
     wireguard-tools
     protonvpn-gui
     keepassxc
+    cava
 
     # e
     sherlock
     nmap
+    gocryptfs # encrypted directories
 
     # breeze
     kdePackages.breeze
@@ -84,8 +87,6 @@
     # nnn
   ];
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
   programs.git = {
     enable = true;
     settings = {
@@ -151,4 +152,5 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.05";
+  programs.home-manager.enable = true;
 }

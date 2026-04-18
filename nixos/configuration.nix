@@ -7,11 +7,6 @@
     ./hardware-configuration.nix
   ];
 
-
-  services.xserver.enable = false;
-  # services.desktopManager.plasma6.enable = true;
-  # services.displayManager.sddm.enable = false;
-
   users.users.gyk = {
     isNormalUser = true;
     description = "kristóf";
@@ -25,6 +20,8 @@
   programs.nix-ld.enable = true;
 
   programs.firefox.enable = true;
+  programs.steam.enable = true;
+  programs.obs-studio.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -35,9 +32,6 @@
     enable = true;
     plugins = with pkgs.xfce; [ thunar-archive-plugin ];
   };
-
-  programs.steam.enable = true;
-  programs.obs-studio.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -50,9 +44,10 @@
     zip unzip
     fzf
     ripgrep
+    killall
 
     # hypr
-    foot
+    unstable.foot # unstable for colors-dark and colors-light
     waybar
     wofi
     grim slurp
@@ -71,7 +66,6 @@
 
     hyprsunset # gammastep
     tmux
-    swayimg
     imagemagick
   ];
 
@@ -118,6 +112,7 @@
         TimeoutStopSec = 10;
       };
   };
+  services.gnome.gnome-keyring.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -155,6 +150,7 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
+    package = pkgs.unstable.tailscale;
   };
 
   # Set your time zone.
