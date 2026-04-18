@@ -110,14 +110,16 @@
   programs.neovim = {
     enable = true;
     extraPackages = with pkgs; [
-      basedpyright
+      basedpyright # python LS
       clang-tools # clangd
       lua-language-server
       rust-analyzer-unwrapped
       stylua
       shfmt
+      kdePackages.qtdeclarative # for QML LS
     ];
   };
+  xdg.configFile."nvim".source = ./lazyvim;
 
   qt = {
     enable = true;
@@ -136,6 +138,8 @@
     };
   };
   xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
+
+  xdg.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
