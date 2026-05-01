@@ -65,9 +65,14 @@
     wl-clipboard
 
     hyprsunset # gammastep
-    tmux
     imagemagick
   ];
+
+  programs.tmux = {
+    enable = true;
+    newSession = true; # when trying to attach
+    keyMode = "vi"; # vim-like keybinds!
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-mono
