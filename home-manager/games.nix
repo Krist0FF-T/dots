@@ -6,7 +6,7 @@
 
     # (formerly minetest)
     # (try the game Glitch!)
-    luanti
+    unstable.luanti
 
     # # really cool but too addictive
     # factorio-demo
@@ -14,7 +14,7 @@
 
     # veloren
     superTuxKart
-    superTux
+    unstable.supertux
     the-powder-toy # (little 2d sandbox)
 
     # 0ad
