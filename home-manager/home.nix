@@ -1,5 +1,5 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+# Resources
+# - `man home-configuration.nix`
 
 # TODO: cliphist
 

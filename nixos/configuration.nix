@@ -1,3 +1,6 @@
+# Resources
+# - `man configuration.nix`
+
 # TODO: write a rebuild script
 
 {
@@ -36,6 +39,7 @@
     enable = true;
     plugins = with pkgs.xfce; [ thunar-archive-plugin ];
   };
+  services.tumbler.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -49,6 +53,7 @@
     fzf
     ripgrep
     killall
+    usbutils # lsusb
 
     # hypr
     unstable.foot # unstable for colors-dark and colors-light
@@ -245,7 +250,7 @@
     ];
   };
 
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
 
   # List services that you want to enable:
 
