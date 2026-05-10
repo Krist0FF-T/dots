@@ -74,6 +74,19 @@
     keyMode = "vi"; # vim-like keybinds!
   };
 
+  # environment.etc."nextcloud-admin-pass".text = "PWD";
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud33;
+    hostName = "localhost";
+    config.adminpassFile = "/etc/nextcloud-admin-pass";
+    config.dbtype = "sqlite";
+    settings.trusted_domains = [
+      "*.ts.net"  # for hosting on my tailnet
+      "192.168.*" # for hosting locally
+    ];
+  };
+
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-mono
     noto-fonts

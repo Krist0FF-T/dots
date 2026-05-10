@@ -9,6 +9,7 @@ nix flake init -t github:misterio77/nix-starter-config#minimal
 
 # TODO
 - [x] ignore power button and lid close
+- [x] host my own nextcloud instance
 - [ ] ssh: add authorized keys to user(s)
 - [ ] easyeffects (audio)
 - [ ] rebuild script
