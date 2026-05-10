@@ -225,14 +225,14 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # to be able to type in different writing systems
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
     fcitx5.addons = with pkgs; [
-      # Japanese, Chinese, Russian and more
-      fcitx5-mozc
-      fcitx5-rime
-      fcitx5-m17n
+      fcitx5-mozc # (jp) 日本語
+      fcitx5-rime # (zh) 中文
+      fcitx5-m17n # (ru) Русский
 
       # GTK and Qt app support
       fcitx5-gtk
