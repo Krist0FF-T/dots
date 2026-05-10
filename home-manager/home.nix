@@ -4,6 +4,7 @@
 # TODO: cliphist
 
 {
+  config,
   lib,
   pkgs,
   ...
@@ -96,6 +97,11 @@
     };
     lfs.enable = true;
     settings.pull.rebase = true;
+    signing = {
+      key = "${config.home.homeDirectory}/.ssh/id_ed25519";
+      signByDefault = true;
+      format = "ssh";
+    };
   };
 
   services.mpd = {
