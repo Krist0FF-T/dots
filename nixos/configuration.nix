@@ -188,11 +188,11 @@
         "guest account" = "nobody";
         "map to guest" = "bad user";
       };
-      "public" = {
-        "path" = "/home/gyk/share";
+      "share" = {
+        "path" = "/mnt/E/share/";
         "browseable" = "yes";
         "read only" = "no";
-        "guest ok" = "yes";
+        "guest ok" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
       };
