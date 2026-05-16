@@ -94,9 +94,10 @@
       user.name = "Krist0FF-T";
       user.email = "155083075+Krist0FF-T@users.noreply.github.com";
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      pull.rebase = true;
     };
     lfs.enable = true;
-    settings.pull.rebase = true;
     signing = {
       key = "${config.home.homeDirectory}/.ssh/id_ed25519";
       signByDefault = true;
