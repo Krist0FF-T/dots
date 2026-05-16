@@ -138,6 +138,8 @@
   };
   xdg.configFile."nvim".source = ./lazyvim;
 
+  services.easyeffects.enable = true;
+
   qt = {
     enable = true;
   };
