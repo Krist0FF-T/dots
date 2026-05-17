@@ -8,7 +8,10 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  dot_config = "${config.home.homeDirectory}/dots/dot_config/";
+  ln = path: config.lib.file.mkOutOfStoreSymlink "${dot_config}/${path}";
+in {
   imports = [
     ./games.nix
   ];
@@ -139,7 +142,7 @@
       nil # nix ls
     ];
   };
-  xdg.configFile."nvim".source = ./lazyvim;
+  xdg.configFile."nvim".source = ln "nvim";
 
   services.easyeffects.enable = true;
 
