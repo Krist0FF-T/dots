@@ -127,10 +127,6 @@ in {
     '';
   };
 
-  # TODO: nix-managed dotfiles?
-  # - though I'm not sure I want to rebuild on small config changes; symlinks work well
-  # - hot-reloading is nice in hyprland and quickshell
-
   programs.neovim = {
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
