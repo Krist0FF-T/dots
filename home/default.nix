@@ -22,6 +22,7 @@ in {
   xdg.configFile = {
     "nvim".source = ln "nvim";
     "quickshell".source = ln "quickshell";
+    "hypr".source = ln "hypr";
   };
 
   # Add stuff for your user as you see fit:
