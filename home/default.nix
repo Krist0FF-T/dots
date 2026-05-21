@@ -145,7 +145,35 @@ in {
     ];
   };
 
-  services.easyeffects.enable = true;
+  programs.helix = {
+    enable = true;
+
+    # loosely based on fufexan's
+    settings = {
+      theme = "monokai";
+      editor = {
+        color-modes = true;
+        # ..
+        cursorline = true;
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        # ..
+        line-number = "relative";
+        # ..
+        soft-wrap.enable = true;
+        statusline.center = [ "position-percentage" ];
+        trim-final-newlines = true;
+        trim-trailing-whitespace = true;
+        whitespace.characters = {
+          newline = "↴";
+          tab = "⇥";
+        };
+      };
+    };
+  };
 
   qt = {
     enable = true;
