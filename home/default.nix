@@ -80,7 +80,7 @@ in {
     libnotify
     dunst # notification daemon, will replace with quickshell
     wireguard-tools
-    protonvpn-gui
+    proton-vpn
     keepassxc
     cava
 
@@ -132,6 +132,8 @@ in {
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
     withPython3 = true;
+    withRuby = false;
+    sideloadInitLua = true;
     extraPackages = with pkgs; [
       basedpyright # python LS
       clang-tools # clangd
@@ -190,6 +192,8 @@ in {
       name = "adw-gtk3-dark";
       package = pkgs.adw-gtk3;
     };
+
+    gtk4.theme = config.gtk.theme;
   };
   xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
 

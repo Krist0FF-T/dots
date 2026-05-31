@@ -37,7 +37,7 @@
 
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [ thunar-archive-plugin ];
+    plugins = [ pkgs.thunar-archive-plugin ];
   };
   services.tumbler.enable = true;
 

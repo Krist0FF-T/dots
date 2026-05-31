@@ -13,7 +13,7 @@
     # mindustry
 
     # veloren
-    superTuxKart
+    supertuxkart
     unstable.supertux
     the-powder-toy # (little 2d sandbox)
 
