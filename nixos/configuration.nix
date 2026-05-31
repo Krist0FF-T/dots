@@ -81,6 +81,7 @@
     enable = true;
     newSession = true; # when trying to attach
     keyMode = "vi"; # vim-like keybinds!
+    escapeTime = 0;
   };
 
   # environment.etc."nextcloud-admin-pass".text = "PWD";
