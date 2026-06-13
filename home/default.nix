@@ -23,6 +23,7 @@ in {
     "nvim".source = ln "nvim";
     "quickshell".source = ln "quickshell";
     "hypr".source = ln "hypr";
+    "foot".source = ln "foot";
   };
 
   # Add stuff for your user as you see fit:
