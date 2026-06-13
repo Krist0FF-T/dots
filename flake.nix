@@ -39,7 +39,7 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      "gyik-hp" = nixpkgs.lib.nixosSystem {
+      "gy8" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           baseModule

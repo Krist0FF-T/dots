@@ -161,7 +161,7 @@
   networking = {
     # Enable networking
     networkmanager.enable = true;
-    hostName = "gyik-hp";
+    hostName = "gy8";
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
