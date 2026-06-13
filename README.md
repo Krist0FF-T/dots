@@ -1,11 +1,11 @@
 
-# nix-dots
+# dots
 
-I ran the following command to initialize this:
+My personal configuration files for NixOS and some programs I use.
+(Based on [misterio77/nix-starter-config](https://github.com/Misterio77/nix-starter-configs).)
 
-```bash
-nix flake init -t github:misterio77/nix-starter-config#minimal
-```
+On non-NixOS systems, "~/.config/x" can be manually symlinked to "./dot_config/x"
+
 
 # Resources
 
