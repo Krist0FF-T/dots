@@ -24,6 +24,7 @@ in {
     "quickshell".source = ln "quickshell";
     "hypr".source = ln "hypr";
     "foot".source = ln "foot";
+    "waybar".source = ln "waybar";
   };
 
   # Add stuff for your user as you see fit:

@@ -1,0 +1,29 @@
+* {
+    font-family: CaskaydiaCove Nerd Font, FontAwesome;
+    font-weight: bold;
+}
+
+.modules-left {
+    padding-left: 10px;
+}
+
+.modules-right {
+    padding-right: 10px;
+}
+
+#workspaces button.visible {
+    border: 2px dashed @theme_selected_bg_color;
+}
+
+#workspaces button.visible label {
+    color: @theme_selected_bg_color;
+}
+
+#workspaces button.active {
+    border: 2px solid @theme_selected_bg_color;
+}
+
+#workspaces button.active label {
+    color: @theme_selected_bg_color;
+}
+

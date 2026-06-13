@@ -1,0 +1,52 @@
+// -*- mode: jsonc -*-
+{
+    "reload_style_on_change": true,
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "spacing": 10, // Gaps between modules
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window",
+    ],
+    "modules-center": [
+        "clock",
+    ],
+    "modules-right": [
+        "tray",
+        "battery",
+        "pulseaudio",
+    ],
+
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{name}",
+    },
+    "tray": {
+        "spacing": 10,
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}",
+        "format-alt": "{icon} {capacity} {time}",
+        "format-full": "full",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}",
+        "format-muted": "M",
+        "on-click": "pavucontrol",
+        "format-icons": {
+            "default": ["", "", ""]
+        }
+    },
+}
