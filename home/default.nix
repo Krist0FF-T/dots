@@ -32,8 +32,8 @@ in {
     newsboat # RSS reader
 
     # creative
-    # godot
-    # blender
+    godot
+    blender
     kdePackages.kdenlive
     krita
     audacity
