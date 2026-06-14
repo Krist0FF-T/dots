@@ -151,6 +151,11 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
+hl.window_rule({
+    match = { class = ".*mpv.*" },
+    content = "none"
+})
+
 hl.workspace_rule({
     workspace = "special:magic",
     on_created_empty = "foot btop"
