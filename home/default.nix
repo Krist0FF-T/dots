@@ -30,8 +30,10 @@ in {
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
+    qutebrowser
     element-desktop # Matrix client
     newsboat # RSS reader
+    kiwix # for offline wikipedia and more
 
     # creative
     godot
@@ -41,6 +43,7 @@ in {
     audacity
     gimp
     openutau # open singing synth, supports DiffSinger
+    inkscape
 
     # media
     zathura # pdf reader
