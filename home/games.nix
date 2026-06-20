@@ -13,13 +13,13 @@
     # mindustry
 
     # veloren
-    supertuxkart
+    # supertuxkart
     unstable.supertux
-    the-powder-toy # (little 2d sandbox)
+    # the-powder-toy # (really cool 2d sandbox)
 
     # 0ad
     # hedgewars
-    warzone2100
+    # warzone2100
     # freeciv
   ];
 }

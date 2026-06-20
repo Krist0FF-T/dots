@@ -37,12 +37,12 @@ hl.monitor({
 -- Environment variables -------------------------------------------------------
 
 -- # theming
--- env = XCURSOR_SIZE, 24
-hl.env("XCURSOR_SIZE", "32")
--- env = XCURSOR_THEME, Adwaita
+hl.env("XCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "Adwaita")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+
 
 -- # functional
 hl.env("GDK_BACKEND", "wayland,x11")
@@ -60,8 +60,7 @@ hl.env("GBM_BACKEND", "nvidia-drm")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("NVD_BACKEND", "direct")
 
--- # NOTE: Autostart
-
+-- Autostart
 hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper & qs & waybar & hyprsunset & fcitx5 & nm-applet & dunst")
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
@@ -104,7 +103,7 @@ hl.config({ decoration = {
         enabled = true,
         -- enabled = false,
         range = 10,
-    }
+    },
 }})
 
 hl.config({

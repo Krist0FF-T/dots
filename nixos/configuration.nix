@@ -15,10 +15,7 @@
   users.users.gyk = {
     isNormalUser = true;
     description = "kristóf";
-    extraGroups = [ "networkmanager" "wheel" ];
-    initialPassword = "password";
-    # packages = with pkgs; [ ];
-
+    extraGroups = [ "networkmanager" "wheel" "video" "render" ];
     # TODO: add authorized keys
   };
 
@@ -115,7 +112,7 @@
     };
   };
 
-  services.power-profiles-daemon.enable = true; 
+  services.power-profiles-daemon.enable = true;
   powerManagement.cpuFreqGovernor = "performance";
 
   # ---------- low editing frequency ----------
@@ -140,7 +137,6 @@
         TimeoutStopSec = 10;
       };
   };
-  services.gnome.gnome-keyring.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -253,11 +249,15 @@
 
   # programs.ssh.startAgent = true;
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
+
   # List services that you want to enable:
 
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentication = false;
+    # # TODO: needs authorized keys
+    # settings.PasswordAuthentication = false;
     settings.PermitRootLogin = "no";
   };
 
@@ -285,8 +285,8 @@
     efi.canTouchEfiVariables = true;
   };
 
-  boot.kernelParams = [ "quiet" ];
-  boot.plymouth.enable = true;
+  # boot.kernelParams = [ "quiet" ];
+  # boot.plymouth.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

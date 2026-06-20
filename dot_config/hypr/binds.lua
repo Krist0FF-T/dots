@@ -41,6 +41,7 @@ hl.bind(mod .. " + CONTROL + Q", hl.dsp.exec_cmd("pkill Hyprland")) -- TODO: qui
 -- TODO:
 -- - save to ~/Pictures/screenshots/
 -- - copy to clipboard
+-- - annotations (w snappy?)
 hl.bind(       "Print",        hl.dsp.exec_cmd("grim -o HDMI-A-1     && notify-send 'screenshot taken' 'HDMI-A-1'"))
 hl.bind(mod .. " + G",         hl.dsp.exec_cmd("grim                 && notify-send 'screenshot taken' 'all monitors'"))
 hl.bind(mod .. " + SHIFT + G", hl.dsp.exec_cmd("grim -g \"$(slurp)\" && notify-send 'screenshot taken' 'selection'"))

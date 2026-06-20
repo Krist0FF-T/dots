@@ -1,7 +1,8 @@
 # Resources
 # - `man home-configuration.nix`
 
-# TODO: cliphist
+# TODO:
+# - cliphist
 
 {
   config,
@@ -28,7 +29,6 @@ in {
   };
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
   home.packages = with pkgs; [
     element-desktop # Matrix client
     newsboat # RSS reader
@@ -52,6 +52,7 @@ in {
     yt-dlp
     playerctl
 
+    # dev
     python313Packages.ipython
     uv # python
     cloc # count lines of code
@@ -162,6 +163,8 @@ in {
     withRuby = false;
     sideloadInitLua = true;
     extraPackages = with pkgs; [
+      tree-sitter
+      fd
       basedpyright # python LS
       clang-tools # clangd
       lua-language-server
