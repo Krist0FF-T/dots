@@ -1,0 +1,25 @@
+[config]
+version_check = false
+
+[templates.hyprlock]
+input_path = '~/.config/matugen/templates/hyprlock_colors.conf'
+output_path = '~/.config/hypr/hyprlock_colors.conf'
+
+[templates.foot]
+input_path = '~/.config/matugen/templates/foot_theme.ini'
+output_path = '~/.config/foot/themes/matugen.ini'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+post_hook = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-{{mode | lower_case}}'\""
+
+[templates.hyprpaper]
+input_path = '~/.config/matugen/templates/hyprpaper.conf'
+output_path = '~/.config/hypr/hyprpaper.conf'
+post_hook = "hyprctl hyprpaper wallpaper ,{{image}},cover"
+

@@ -21,11 +21,13 @@ in {
   home.homeDirectory = "/home/gyk";
 
   xdg.configFile = {
+    # TODO: for each, `x.source = ln x`
     "nvim".source = ln "nvim";
     "quickshell".source = ln "quickshell";
     "hypr".source = ln "hypr";
     "foot".source = ln "foot";
     "waybar".source = ln "waybar";
+    "matugen".source = ln "matugen";
   };
 
   # Add stuff for your user as you see fit:
