@@ -193,6 +193,12 @@ in {
 
   xdg.enable = true;
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    setSessionVariables = true;
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
