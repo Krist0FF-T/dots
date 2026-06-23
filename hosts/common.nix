@@ -169,15 +169,20 @@
     HandleLidSwitch = "ignore";
   };
 
-  services.greetd = {
+  services.greetd = let
+    session = {
+      user = "gyk";
+      command = "${pkgs.tuigreet}/bin/tuigreet" +
+          " --remember --time --asterisks" +
+          " --greeting \"Szia Lajos!\"" +
+          " --cmd start-hyprland";
+    };
+  in {
     enable = true;
-    settings.default_session = {
-      command = ''
-        ${pkgs.tuigreet}/bin/tuigreet \
-          --remember --time --asterisks \
-          --greeting "Szia Lajos!" \
-          --cmd start-hyprland
-      '';
+    settings = {
+      terminal.vt = 1;
+      default_session = session;
+      initial_session = session;
     };
   };
 
