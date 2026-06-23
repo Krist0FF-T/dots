@@ -30,7 +30,6 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
-    package = pkgs.unstable.tailscale;
   };
 
   # See https://nixos.wiki/wiki/Samba

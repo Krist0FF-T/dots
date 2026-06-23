@@ -12,10 +12,7 @@
   programs.firefox.enable = true;
   programs.obs-studio.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.unstable.hyprland;
-  };
+  programs.hyprland.enable = true;
 
   programs.thunar = {
     enable = true;
@@ -44,17 +41,17 @@
     usbutils # lsusb
 
     # hypr
-    unstable.foot # unstable for colors-dark and colors-light
+    foot
     waybar
     wofi
     grim slurp
     hyprpicker
     hyprpaper
-    unstable.hyprlock
+    hyprlock
     networkmanagerapplet
     adwaita-icon-theme
     brightnessctl
-    unstable.matugen
+    matugen
     libnotify # for notify-send
     dunst
 

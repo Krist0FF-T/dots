@@ -121,7 +121,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = pkgs.unstable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
     defaultEditor = true;
     withPython3 = true;
     withRuby = false;
