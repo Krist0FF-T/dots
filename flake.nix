@@ -43,7 +43,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           baseModule
-          ./nixos/configuration.nix
+          ./hosts/gy8
         ];
       };
     };
