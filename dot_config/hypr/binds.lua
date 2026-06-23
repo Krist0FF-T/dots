@@ -18,6 +18,16 @@ hl.bind(mod .. " + R", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(mod .. " + C", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("pkill hyprpaper || hyprpaper"))
 
+-- toggle internal monitor
+hl.bind(mod .. " + CONTROL + M", function()
+    local mon_name = "eDP-1"
+    local enabled = (hl.get_monitor(mon_name) ~= nil)
+    hl.monitor({
+        output = mon_name,
+        disabled = enabled
+    })
+end)
+
 -- window management
 hl.bind(mod .. " + SHIFT + C", hl.dsp.window.close(), { repeating = true })
 hl.bind(mod .. " + T", hl.dsp.window.float({ action = "toggle" }))
