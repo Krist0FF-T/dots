@@ -46,6 +46,13 @@
           ./hosts/gy8
         ];
       };
+      "gy7" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          baseModule
+          ./hosts/gy7
+        ];
+      };
     };
   };
 }
