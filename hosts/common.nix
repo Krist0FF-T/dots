@@ -203,7 +203,10 @@
   # boot.plymouth.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+  };
 
   nix.gc = {
     automatic = true;
