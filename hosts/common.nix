@@ -206,12 +206,5 @@
     dates = "daily";
     options = "--delete-older-than 14d";
   };
-
-  fileSystems."/mnt/E" = {
-    # TODO: by-uuid instead
-    device = "/dev/disk/by-label/ehdd";
-    fsType = "ext4";
-    options = [ "users" "nofail" "exec" ];
-  };
 }
 
