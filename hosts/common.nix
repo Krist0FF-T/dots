@@ -95,7 +95,6 @@
   services.xserver.xkb.layout = "hu";
   console.keyMap = "hu";
 
-  security.polkit.enable = true;
   systemd.user.services.hyprpolkitagent = {
     description = "hyprpolkitagent";
     wantedBy = [ "graphical-session.target" ];
@@ -111,9 +110,14 @@
   };
   services.gnome.gnome-keyring.enable = true;
 
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+    sudo.wheelNeedsPassword = false;
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
