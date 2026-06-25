@@ -62,10 +62,16 @@ hl.env("NVD_BACKEND", "direct")
 
 -- Autostart
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprpaper & qs & waybar & hyprsunset & fcitx5 & nm-applet & dunst")
+	hl.exec_cmd("hyprpaper") -- wallpaper daemon
+  hl.exec_cmd("qs") -- quickshell - custom widgets
+  hl.exec_cmd("waybar") -- TODO: custom quickshell bar
+  -- TODO: switch to gammastep for automatic temperature based on sun position
+  hl.exec_cmd("hyprsunset")
+  hl.exec_cmd("fcitx5") -- for different writing systems (jp, zh, ru)
+  hl.exec_cmd("nm-applet")
+  hl.exec_cmd("dunst") -- notification daemon - TODO: custom in quickshell
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-	hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    -- hl.exec_cmd("hyprlock")
+	hl.exec_cmd("systemctl --user start hyprpolkitagent") -- elevated prileges
 end)
 
 hl.config({ general = {
