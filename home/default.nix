@@ -16,6 +16,7 @@ in {
   imports = [
     ./games.nix
     ./git.nix
+    ./firefox.nix
   ];
 
   home.username = "gyk";

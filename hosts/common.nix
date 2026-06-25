@@ -9,7 +9,6 @@
   };
 
   programs.nix-ld.enable = true;
-  programs.firefox.enable = true;
   programs.obs-studio.enable = true;
 
   programs.hyprland.enable = true;
