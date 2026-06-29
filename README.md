@@ -17,3 +17,8 @@ Others' configs:
 - [ilyamiro/nixos-configuration](https://github.com/ilyamiro/nixos-configuration)
 - [AlexNabokikh/nix-config](https://github.com/AlexNabokikh/nix-config)
 
+Nix-related searches:
+- [Noogle](https://noogle.dev/)
+- [Nix packages](https://search.nixos.org/packages)
+- [NixOS options](https://search.nixos.org/options)
+- [Home-manager options](https://search.nixos.org/options?source=home_manager)
