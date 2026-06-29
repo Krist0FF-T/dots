@@ -194,6 +194,9 @@
   # boot.kernelParams = [ "quiet" ];
   # boot.plymouth.enable = true;
 
+  # compresses 50% of ram for use as swap
+  zramSwap.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
