@@ -108,7 +108,6 @@
         TimeoutStopSec = 10;
       };
   };
-  services.gnome.gnome-keyring.enable = true;
 
   security = {
     polkit.enable = true;
@@ -140,6 +139,10 @@
     # Or disable the firewall altogether.
     # firewall.enable = false;
   };
+
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+  programs.ssh.startAgent = true;
 
   services.openssh = {
     enable = true;
