@@ -61,9 +61,9 @@
             definedAliases = [ alias ];
           };
         in {
-          nix-packages = nix-search "np" "Nix Packages" "packages" [];
-          nixos-options = nix-search "no" "NixOS Options" "options" [];
-          home-options = nix-search "ho" "Home-Manager Options" "options" [
+          nix-packages = nix-search "@np" "Nix Packages" "packages" [];
+          nixos-options = nix-search "@no" "NixOS Options" "options" [];
+          home-options = nix-search "@ho" "Home-Manager Options" "options" [
             {name = "source"; value = "home_manager";}
           ];
         };
