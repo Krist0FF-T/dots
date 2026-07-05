@@ -209,6 +209,12 @@ in {
 
   programs.bash.enable = true;
   programs.starship.enable = true;
+
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

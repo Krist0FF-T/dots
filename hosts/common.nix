@@ -20,6 +20,8 @@
   services.tumbler.enable = true;
   services.gvfs.enable = true;
 
+  programs.kdeconnect.enable = true;
+
   programs.tmux = {
     enable = true;
     newSession = true; # when trying to attach
