@@ -1,10 +1,6 @@
 [config]
 version_check = false
 
-[templates.hyprlock]
-input_path = '~/.config/matugen/templates/hyprlock_colors.conf'
-output_path = '~/.config/hypr/hyprlock_colors.conf'
-
 [templates.foot]
 input_path = '~/.config/matugen/templates/foot_theme.ini'
 output_path = '~/.config/foot/themes/matugen.ini'

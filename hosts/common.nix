@@ -48,7 +48,6 @@
     grim slurp
     hyprpicker
     hyprpaper
-    hyprlock
     networkmanagerapplet
     adwaita-icon-theme
     brightnessctl

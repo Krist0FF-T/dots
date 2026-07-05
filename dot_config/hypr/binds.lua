@@ -42,7 +42,7 @@ hl.bind(mod .. " + Tab", hl.dsp.focus({ monitor = "+1" })) -- TODO: test
 hl.bind(mod .. " + SHIFT + Tab", hl.dsp.workspace.swap_monitors({ monitor1=0, monitor2=1 })) -- TODO: test
 
 -- lock, exit
-hl.bind(mod .. " + N", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mod .. " + N", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mod .. " + SHIFT + N", hl.dsp.dpms(), { locked = true }) -- TODO: don't toggle dpms directly
 hl.bind(mod .. " + CONTROL + N", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
 

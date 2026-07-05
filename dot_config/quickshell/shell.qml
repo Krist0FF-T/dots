@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 import qs.services
 import qs.modules
+import qs.lock
 import QtQuick
 import Quickshell
 import Quickshell.Io
@@ -10,6 +11,7 @@ ShellRoot {
 
 	Background {}
 	// Bar {}
+    Lock {}
 
     // --- VolumeOsd ---
 
