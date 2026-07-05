@@ -172,6 +172,13 @@ in {
     };
   };
 
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = config.programs.bash.enable;
+    # allows to "cd" visually! been wanting this for years
+    shellWrapperName = "y";
+  };
+
   qt = {
     enable = true;
   };

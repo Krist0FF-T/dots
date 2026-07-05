@@ -9,7 +9,8 @@ local mod = "SUPER"
 -- launch apps
 hl.bind(mod .. " + RETURN", hl.dsp.exec_cmd("foot"), { repeating = true })
 hl.bind(mod .. " + SHIFT + RETURN", hl.dsp.exec_cmd("foot qalc"))
-hl.bind(mod .. " + E", hl.dsp.exec_cmd("thunar"))
+hl.bind(mod .. " + E", hl.dsp.exec_cmd("foot yazi"))
+hl.bind(mod .. " + SHIFT + E", hl.dsp.exec_cmd("thunar"))
 hl.bind(mod .. " + W", hl.dsp.exec_cmd("firefox -p"))
 hl.bind(mod .. " + M", hl.dsp.exec_cmd("mpv $(wl-paste) --ytdl-format=\"bv[height<=1080]+ba\""))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd("pkill waybar || waybar"))
