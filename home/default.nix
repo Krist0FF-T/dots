@@ -104,6 +104,8 @@ in {
     kdePackages.breeze-gtk
     kdePackages.breeze-icons
 
+    qt6Packages.qt6ct
+
     # # to check
     # burpsuite wireshark john hashcat ffuf
     # nnn
@@ -181,6 +183,7 @@ in {
 
   qt = {
     enable = true;
+    platformTheme.name = "qtct";
   };
 
   gtk = {
