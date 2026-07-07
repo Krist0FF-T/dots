@@ -1,13 +1,5 @@
 { pkgs, ... }:
 {
-  # has the samba share directory
-  fileSystems."/mnt/E" = {
-    # TODO: by-uuid instead
-    device = "/dev/disk/by-label/ehdd";
-    fsType = "ext4";
-    options = [ "users" "nofail" "exec" ];
-  };
-
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud33;
@@ -43,7 +35,7 @@
         "map to guest" = "bad user";
       };
       "share" = {
-        "path" = "/mnt/E/share/";
+        "path" = "/srv/share/";
         "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "no";
