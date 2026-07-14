@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    lutris
+    winetricks
+
     # a Minecraft launcher (MultiMC fork)
     prismlauncher
 
