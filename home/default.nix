@@ -6,7 +6,6 @@
 
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -17,10 +16,19 @@ in {
     ./games.nix
     ./git.nix
     ./firefox.nix
+    ./terminal.nix
+    ./theming.nix
   ];
 
   home.username = "gyk";
   home.homeDirectory = "/home/gyk";
+
+  xdg.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    setSessionVariables = true;
+  };
 
   xdg.configFile = {
     # TODO: for each, `x.source = ln x`
@@ -34,10 +42,16 @@ in {
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
+    quickshell
+
     qutebrowser
-    element-desktop # Matrix client
+    # element-desktop # Matrix client (ew, electron based)
+    dino # xmpp client (cute logo, native gtk, lightweight)
     newsboat # RSS reader
     kiwix # for offline wikipedia and more
+    freetube # yt frontend with local playlists, history, ..
+    gnome-pomodoro
+    transmission_4-gtk
 
     # creative
     godot
@@ -51,69 +65,24 @@ in {
 
     # media
     zathura # pdf reader
-    mpv
     vimiv-qt # vim-like image viewer
     libreoffice-fresh
-    mpc ncmpcpp rmpc # mpd stuff (new to it)
-    ffmpeg
-    yt-dlp
-    playerctl
+    playerctl # required by multimedia key bindings
+    mpc
+    rmpc
 
-    # dev
-    python313Packages.ipython
-    uv # python
-    cloc # count lines of code
-    nushell
-
-    tree
-    file
-    eza # ls alternative
-    sshfs # mount over ssh
-
-    libqalculate # provides qalc (calculator)
-    khal # calendar
-    python313Packages.qrcode # qr code gen
-    zellij # tmux alternative
-    tealdeer # tldr
-    wikiman
-
-    fastfetch
-    microfetch
-
-    # fun stuff
-    cowsay
-    # sl figlet toilet lolcat
-
-    quickshell
     pavucontrol
     gnome-clocks
-    libnotify
+    libnotify # for `notify-send` in scripts
     dunst # notification daemon, will replace with quickshell
     wireguard-tools
-    proton-vpn
+    # proton-vpn
     keepassxc
-    cava
-
-    # e
-    sherlock
-    nmap
-    gocryptfs # encrypted directories
-
-    # breeze
-    kdePackages.breeze
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
-
-    qt6Packages.qt6ct
-
-    # # to check
-    # burpsuite wireshark john hashcat ffuf
-    # nnn
   ];
 
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/gyk/Music/";
+    musicDirectory = config.xdg.userDirs.music;
     extraConfig = ''
         audio_output {
             type "pipewire"
@@ -122,100 +91,24 @@ in {
     '';
   };
 
-  programs.neovim = {
+  programs.mpv = {
     enable = true;
-    package = pkgs.neovim-unwrapped;
-    defaultEditor = true;
-    withPython3 = true;
-    withRuby = false;
-    sideloadInitLua = true;
-    extraPackages = with pkgs; [
-      tree-sitter
-      fd
-      basedpyright # python LS
-      clang-tools # clangd
-      lua-language-server
-      rust-analyzer-unwrapped
-      stylua
-      shfmt
-      kdePackages.qtdeclarative # for QML LS
-      astro-language-server
-      nil # nix ls
-    ];
-  };
-
-  programs.helix = {
-    enable = true;
-
-    # loosely based on fufexan's
-    settings = {
-      theme = "monokai";
-      editor = {
-        color-modes = true;
-        # ..
-        cursorline = true;
-        cursor-shape = {
-          insert = "bar";
-          normal = "block";
-          select = "underline";
-        };
-        # ..
-        line-number = "relative";
-        # ..
-        soft-wrap.enable = true;
-        statusline.center = [ "position-percentage" ];
-        trim-final-newlines = true;
-        trim-trailing-whitespace = true;
-        whitespace.characters = {
-          newline = "↴";
-          tab = "⇥";
-        };
-      };
+    scripts = [ pkgs.mpvScripts.mpris ];
+    config = {
+      save-position-on-quit = true;
     };
   };
-
-  programs.yazi = {
-    enable = true;
-    enableBashIntegration = config.programs.bash.enable;
-    # allows to "cd" visually! been wanting this for years
-    shellWrapperName = "y";
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-  };
-
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
-
-    gtk4.theme = config.gtk.theme;
-  };
-  xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
-
-  xdg.enable = true;
-
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-    setSessionVariables = true;
-  };
-
-  programs.bash.enable = true;
-  programs.starship.enable = true;
 
   services.kdeconnect = {
     enable = true;
     indicator = true;
+  };
+
+  services.hypridle.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    # nix-direnv.enable = true;
   };
 
   # Nicely reload system units when changing configs
