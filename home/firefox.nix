@@ -6,6 +6,7 @@
     configPath = "${config.xdg.configHome}/mozilla/firefox";
     policies = {
       # https://mozilla.github.io/policy-templates/#extensionsettings
+      # TODO: do it like misterio77
       ExtensionSettings = {
         "*".installation_mode = "blocked";
 
@@ -37,6 +38,27 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-recommended-videos/latest.xpi";
           installation_mode = "force_installed";
           default_area = "menupanel";
+        };
+
+        # LibRedirect
+        "7esoorv3@alefvanoon.anonaddy.me" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # Sidebery
+        "{3c078156-979c-498b-8990-85f7987dd929}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sidebery/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # KeePassXC
+        "keepassxc-browser@keepassxc.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "navbar";
         };
       };
     };
@@ -88,19 +110,49 @@
       # bookmarks = {};
       settings = {
         "browser.tabs.unloadOnLowMemory" = true;
+        "browser.cache.disk.enable" = false;
         # enables userContent.css and userChrome.css
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "browser.aboutwelcome.enabled" = false;
+        "browser.urlbar.trimURLs" = false;
+        "dom.disable_window_move_resize" = true;
+        "widget.gtk.overlay-scrollbars.enabled" = false;
+        "browser.tabs.inTitlebar" = 0; # csd
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.tabs.loadBookmarksInTabs" = true;
+        "browser.startup.page" = 3;
+
+        # make firefox a bit less annoying
         "browser.aboutConfig.showWarning" = false;
+        "identity.fxaccounts.enabled" = false; # mozilla acc
+        "browser.tabs.firefox-view" = false;
+        "browser.shell.checkDefaultBrowser" = false;
+        "browser.aboutwelcome.enabled" = false;
+        "signon.rememberSignons" = false; # built-in password manager
 
-        "browser.startup.homepage" = "file:///home/gyk/dev/startpage/index.html";
-        "browser.newtabpage.enabled" = false;
-        # "browser.newtab.url" = ...; # unsupported, requires extension
+        # force new tab
+        "browser.link.open_newwindow" = 3;
+        "browser.link.open_newwindow.restriction" = 0;
 
+        # home page and new tab page
+        "browser.startup.homepage" = "file://${config.xdg.userDirs.projects}/startpage/index.html";
+        # TODO: custom new tab page
+        "browser.newtabpage.enabled" = false; 
+
+        # graphics: hardware acceleration
         "gfx.webrender.all" = true;
         "gfx.webrender.software" = false;
 
         "browser.contentblocking.category" = "strict";
+        "media.eme.enabled" = false; # DRM
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+        "dom.security.https_only_mode" = true;
+
+        # telemetry
+        "app.shield.optoutstudies.enabled" = false;
+        "browser.discovery.enabled" = false;
+        "breakpad.reportURL" = "";
+        "browser.tabs.crashReporting.sendReport" = false;
       };
     };
   };
