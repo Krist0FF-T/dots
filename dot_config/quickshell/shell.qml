@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 import qs.services
 import qs.modules
+import qs.bar
 import qs.lock
 import QtQuick
 import Quickshell
@@ -10,7 +11,21 @@ ShellRoot {
 	id: root
 
 	Background {}
-	// Bar {}
+
+    LazyLoader {
+        active: Globals.shouldShowBar
+        Bar {}
+    }
+
+    IpcHandler {
+        target: "bar"
+
+        function toggle(): bool {
+            Globals.shouldShowBar = !Globals.shouldShowBar
+            return Globals.shouldShowBar
+        }
+    }
+	
     Lock {}
 
     // --- VolumeOsd ---
