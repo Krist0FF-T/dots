@@ -34,5 +34,7 @@ opt.scrolloff = 8 -- Lines of context
 opt.swapfile = false
 
 opt.smartcase = true -- Don't ignore case with capitals
-opt.wrap = true -- Disable line wrap
+opt.wrap = true
+opt.breakindent = true
+opt.breakindentopt = "shift:2"
 
