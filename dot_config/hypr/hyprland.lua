@@ -84,7 +84,6 @@ hl.config({ general = {
     -- col.active_border = $c_border_active
     -- col.inactive_border = $c_border_inactive
 
-    resize_on_border = true,
     layout = "dwindle",
 }})
 
