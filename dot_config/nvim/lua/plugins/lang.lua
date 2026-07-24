@@ -1,4 +1,3 @@
--- local basedpyright = require "lspconfig.configs.basedpyright"
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -9,13 +8,14 @@ return {
                 "bash",
                 "rust",
                 "cpp",
+                "json",
 
+                -- webdev
                 "astro",
                 "html",
                 "javascript",
                 "css",
                 "scss",
-                "json",
             },
         },
     },
@@ -30,14 +30,14 @@ return {
                 -- ruff = {},
                 -- pyright = { enabled = false },
                 basedpyright = {
-                    settings = {basedpyright = {analysis = {
+                    settings = { basedpyright = { analysis = {
                         typeCheckingMode = "basic"
                     }}}
                 },
                 clangd = {},
                 rust_analyzer = {},
                 astro = {},
-                nil_ls = {},
+                nil_ls = {}, -- nix
                 qmlls = {
                     enabled = true,
                     -- filetypes = { "qml" },
