@@ -10,7 +10,7 @@
   ...
 }: let
   dot_config = "${config.home.homeDirectory}/dots/dot_config/";
-  ln = path: config.lib.file.mkOutOfStoreSymlink "${dot_config}/${path}";
+  ln_conf = path: config.lib.file.mkOutOfStoreSymlink "${dot_config}/${path}";
 in {
   imports = [
     ./games.nix
@@ -32,12 +32,12 @@ in {
 
   xdg.configFile = {
     # TODO: for each, `x.source = ln x`
-    "nvim".source = ln "nvim";
-    "quickshell".source = ln "quickshell";
-    "hypr".source = ln "hypr";
-    "foot".source = ln "foot";
-    "waybar".source = ln "waybar";
-    "matugen".source = ln "matugen";
+    "nvim".source = ln_conf "lazyvim";
+    "quickshell".source = ln_conf "quickshell";
+    "hypr".source = ln_conf "hypr";
+    "foot".source = ln_conf "foot";
+    "waybar".source = ln_conf "waybar";
+    "matugen".source = ln_conf "matugen";
   };
 
   # Add stuff for your user as you see fit:
