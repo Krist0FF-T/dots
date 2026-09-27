@@ -60,6 +60,13 @@
           installation_mode = "normal_installed";
           default_area = "navbar";
         };
+
+        # ActivityWatch
+        "{ef87d84c-2127-493f-b952-5b4e744245bc}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/aw-watcher-web/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
       };
     };
     profiles.default = {

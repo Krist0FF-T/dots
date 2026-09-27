@@ -51,6 +51,8 @@ in {
     kiwix # for offline wikipedia and more
     freetube # yt frontend with local playlists, history, ..
     gnome-pomodoro
+    activitywatch
+    awatcher # wayland watcher for AW
     transmission_4-gtk
 
     # creative
