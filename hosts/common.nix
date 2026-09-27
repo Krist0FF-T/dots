@@ -22,13 +22,6 @@
 
   programs.kdeconnect.enable = true;
 
-  programs.tmux = {
-    enable = true;
-    newSession = true; # when trying to attach
-    keyMode = "vi"; # vim-like keybinds!
-    escapeTime = 0;
-  };
-
   environment.systemPackages = with pkgs; [
     vim
     htop btop
