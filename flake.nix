@@ -2,7 +2,7 @@
   description = "My NixOS system configuration.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
 
     # Home manager
     home-manager = {
