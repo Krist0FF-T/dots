@@ -32,7 +32,7 @@ in {
 
   xdg.configFile = {
     # TODO: for each, `x.source = ln x`
-    "nvim".source = ln_conf "lazyvim";
+    "nvim".source = ln_conf "nvim";
     "quickshell".source = ln_conf "quickshell";
     "hypr".source = ln_conf "hypr";
     "foot".source = ln_conf "foot";
