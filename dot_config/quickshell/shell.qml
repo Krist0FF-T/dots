@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 import qs.services
 import qs.modules
-import qs.bar
+import qs.osd
 import qs.lock
 import QtQuick
 import Quickshell
@@ -11,58 +11,22 @@ ShellRoot {
 	id: root
 
 	Background {}
+    property bool showOsd: true
 
     LazyLoader {
-        active: Globals.shouldShowBar
-        Bar {}
+        active: root.showOsd
+        OSD {}
     }
 
     IpcHandler {
-        target: "bar"
+        target: "osd"
 
         function toggle(): bool {
-            Globals.shouldShowBar = !Globals.shouldShowBar
-            return Globals.shouldShowBar
+            root.showOsd = !root.showOsd
         }
     }
 	
     Lock {}
-
-    // --- VolumeOsd ---
-
-	Timer {
-		id: hideTimer
-		interval: 1500
-		onTriggered: Globals.shouldShowOsd = false
-	}
-
-	function showOsd() {
-        Globals.shouldShowOsd = true
-        hideTimer.restart()
-    }
-
-	Connections {
-		target: Audio
-		function onVolumeChanged(): void {
-    		showOsd()
-		}
-		function onMutedChanged(): void {
-		    showOsd()
-		}
-		function onSinkChanged(): void {
-            showOsd()
-        }
-	}
-
-	LazyLoader {
-		active: Globals.shouldShowOsd
-		VolumeOsd {}
-	}
-
-	// LazyLoader {
-	// 	active: true
-	// 	Bar {}
-	// }
 
 	// Loader {
 	// 	active: Globals.shouldShowHee
