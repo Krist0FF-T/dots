@@ -25,32 +25,6 @@ ShellRoot {
             root.showOsd = !root.showOsd
         }
     }
-	
+
     Lock {}
-
-	// Loader {
-	// 	active: Globals.shouldShowHee
-	//        Variants {
-	//            model: Quickshell.screens
-	//            Hee {
-	//                visible: Globals.shouldShowHee
-	//            }
-	//        }
-	// }
-
-    Variants {
-        model: Quickshell.screens
-        Hee {
-            visible: Globals.shouldShowHee
-        }
-    }
-
-    IpcHandler {
-        target: "hee"
-
-        function toggle(): bool {
-            Globals.shouldShowHee = !Globals.shouldShowHee
-            return Globals.shouldShowHee
-        }
-    }
 }
