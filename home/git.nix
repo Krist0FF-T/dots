@@ -19,10 +19,10 @@
 
   programs.lazygit = {
     enable = true;
-    settings.git.pagers = [
+    settings.git.diffRenderers = [
       {
         colorArg = "always";
-        pager = "delta --paging=never";
+        command = "delta --paging=never";
       }
     ];
     settings.gui.theme = {
