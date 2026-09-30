@@ -6,6 +6,29 @@ require("binds")
 -- - focus mode toggle
 -- - some animations?
 -- - groups?
+-- special workspaces
+
+local function mkSpecial(name, bind, command, window_size)
+    local mod = "SUPER"
+    hl.bind(mod .. " + " .. bind, hl.dsp.workspace.toggle_special(name))
+    hl.bind(mod .. " + SHIFT + " .. bind, hl.dsp.window.move({ workspace = "special:"..name }))
+
+    hl.workspace_rule({
+        workspace = "special:" .. name,
+        on_created_empty = command
+    })
+    hl.window_rule({
+        match = {workspace = "special:" .. name},
+        float = true,
+        size = window_size or {1280, 720},
+    })
+end
+
+mkSpecial("calendar", "period", "foot ikhal")
+mkSpecial("log", "comma", "foot -D ~/Documents/exobrain nvim log/year_2026_27.md")
+mkSpecial("calculator", "minus", "foot qalc")
+mkSpecial("btop", "s", "foot btop")
+mkSpecial("scratch", "d", "foot nvim", {480, 240})
 
 -- Monitors --------------------------------------------------------------------
 

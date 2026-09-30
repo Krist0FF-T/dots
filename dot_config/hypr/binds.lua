@@ -15,7 +15,6 @@ hl.bind(mod .. " + W", hl.dsp.exec_cmd("firefox -p"))
 hl.bind(mod .. " + M", hl.dsp.exec_cmd("mpv $(wl-paste) --ytdl-format=\"bv[height<=1080]+ba\""))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd("qs ipc call bar toggle"))
 hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd("pkill waybar || waybar"))
-hl.bind(mod .. " + D", hl.dsp.exec_cmd("qs ipc call hee toggle"))
 hl.bind(mod .. " + R", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(mod .. " + C", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("pkill hyprpaper || hyprpaper"))
@@ -80,10 +79,6 @@ end
 
 -- alt-tab (old habits + allows focusing floating windows)
 hl.bind("ALT + TAB", hl.dsp.window.cycle_next(), { repeating = true })
-
--- Example special workspace (scratchpad)
-hl.bind(mod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- # Scroll through existing workspaces with mainMod + scroll
 hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1", mouse = true}))
