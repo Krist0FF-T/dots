@@ -43,9 +43,9 @@ hl.bind(mod .. " + Tab", hl.dsp.focus({ monitor = "+1" })) -- TODO: test
 hl.bind(mod .. " + SHIFT + Tab", hl.dsp.workspace.swap_monitors({ monitor1=0, monitor2=1 })) -- TODO: test
 
 -- lock, exit
-hl.bind(mod .. " + N", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind(mod .. " + SHIFT + N", hl.dsp.dpms(), { locked = true }) -- TODO: don't toggle dpms directly
-hl.bind(mod .. " + CONTROL + N", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
+hl.bind(mod .. " + Q", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mod .. " + ESCAPE", hl.dsp.exec_cmd("systemctl suspend"), { locked = true })
+hl.bind(mod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("poweroff"), { locked = true })
 
 hl.bind(mod .. " + CONTROL + Q", hl.dsp.exec_cmd("pkill Hyprland")) -- TODO: quit safely
 
