@@ -20,12 +20,6 @@
   services.tumbler.enable = true;
   services.gvfs.enable = true;
 
-  virtualisation.waydroid.enable = true;
-  virtualisation.waydroid.package = pkgs.waydroid-nftables;
-  environment.systemPackages = [
-    pkgs.waydroid-helper
-  ];
-
   programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
