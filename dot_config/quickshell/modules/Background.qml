@@ -13,25 +13,30 @@ Variants {
 
         exclusionMode: ExclusionMode.Ignore
         WlrLayershell.layer: WlrLayer.Bottom
-        // anchors.top: true
-        anchors.bottom: true
-        anchors.left: true
+        anchors.top: true
+        margins.top: screen.height / 10
+        // anchors.bottom: true
+        // anchors.left: true
         // anchors.right: true
-        color: "green"
-        implicitWidth: child.implicitWidth + 20
-        implicitHeight: child.implicitHeight + 20
+        color: "transparent"
+        implicitWidth: child.implicitWidth + 30
+        implicitHeight: child.implicitHeight + 30
+        // anchors.marginTop: 10
 
         Rectangle {
             anchors.fill: parent
-            color: "red"
+            color: "#181818"
+            radius: 10
         }
 
         StyledText {
             id: child
             text: Qt.formatDateTime(
                 DateTime.date,
-                "dd ddd HH:mm:ss"
+                // "dd ddd HH:mm:ss"
+                "HH:mm"
             )
+            font.pixelSize: 32
             anchors.centerIn: parent
             // anchors.bottom: true
             // anchors.fill: parent

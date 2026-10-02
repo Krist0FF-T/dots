@@ -6,27 +6,30 @@ Scope {
     id: root
     signal unlocked()
     signal failed()
-
     property string currentText: ""
 
-    function tryUnlock() {
+    function tryUnlock(password) {
+        pam.password = password
         pam.start()
     }
 
     PamContext {
         id: pam
+        property string password: ""
 
         onPamMessage: {
             if (this.responseRequired) {
-                this.respond(root.currentText)
+                root.currentText = "..."
+                this.respond(this.password)
+                this.password = ""
             }
         }
 
         onCompleted: result => {
             if (result == PamResult.Success) {
                 root.unlocked()
-            } else {
-                root.currentText = ""
+            } else if (result == PamResult.Failed) {
+                root.currentText = "failed"
             }
         }
     }

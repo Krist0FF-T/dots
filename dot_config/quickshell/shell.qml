@@ -8,9 +8,10 @@ import Quickshell
 import Quickshell.Io
 
 ShellRoot {
-	id: root
+    id: root
 
-	Background {}
+    Background {}
+
     property bool showOsd: true
 
     LazyLoader {

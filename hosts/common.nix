@@ -155,6 +155,7 @@
 
   services.power-profiles-daemon.enable = true; 
   powerManagement.cpuFreqGovernor = "performance";
+  services.upower.enable = true; # reports %, for quickshell
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

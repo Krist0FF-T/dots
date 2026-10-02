@@ -8,7 +8,7 @@ StyledText {
         DateTime.date.getMinutes() % 5 == 0 &&
         DateTime.date.getSeconds() < 5
     )
-    property bool flash: 21 <= DateTime.date.getHours()
+    property bool flash: 20 <= DateTime.date.getHours()
 
     color: {
         if (!flash) {
