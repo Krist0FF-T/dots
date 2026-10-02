@@ -31,26 +31,6 @@
     ripgrep
     killall
     usbutils # lsusb
-
-    # hypr
-    foot
-    waybar
-    wofi
-    grim slurp
-    hyprpicker
-    hyprpaper
-    networkmanagerapplet
-    adwaita-icon-theme
-    brightnessctl
-    matugen
-    libnotify # for notify-send
-    dunst
-
-    # nvim
-    wl-clipboard
-
-    hyprsunset # gammastep
-    imagemagick
   ];
 
   fonts.packages = with pkgs; [

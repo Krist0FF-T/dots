@@ -42,8 +42,6 @@ in {
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    quickshell
-
     qutebrowser
     # element-desktop # Matrix client (ew, electron based)
     dino # xmpp client (cute logo, native gtk, lightweight)
@@ -72,14 +70,28 @@ in {
     playerctl # required by multimedia key bindings
     mpc
     rmpc
+    imagemagick
 
     pavucontrol
     gnome-clocks
-    libnotify # for `notify-send` in scripts
-    dunst # notification daemon, will replace with quickshell
-    wireguard-tools
     # proton-vpn
     keepassxc
+
+    # environment
+    libnotify # for `notify-send` in scripts
+    dunst # notification daemon, will replace with quickshell
+    matugen # material you-based color scheme gen
+    quickshell
+    waybar
+    wofi
+    grim slurp
+    hyprpicker
+    hyprpaper
+    hyprsunset
+    adwaita-icon-theme
+    brightnessctl
+    wl-clipboard
+    foot
   ];
 
   services.mpd = {
