@@ -30,6 +30,10 @@ in {
     setSessionVariables = true;
   };
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   xdg.configFile = {
     # TODO: for each, `x.source = ln x`
     "nvim".source = ln_conf "nvim";
@@ -38,6 +42,7 @@ in {
     "foot".source = ln_conf "foot";
     "waybar".source = ln_conf "waybar";
     "matugen".source = ln_conf "matugen";
+    "mpv/input.conf".source = ln_conf "mpv_input.conf";
   };
 
   # Add stuff for your user as you see fit:
@@ -47,32 +52,46 @@ in {
     dino # xmpp client (cute logo, native gtk, lightweight)
     newsboat # RSS reader
     kiwix # for offline wikipedia and more
-    freetube # yt frontend with local playlists, history, ..
+    # freetube # yt frontend with local playlists, history, ..
     gnome-pomodoro
     activitywatch
     awatcher # wayland watcher for AW
     transmission_4-gtk
+    digital # logisim-like electronics sim
+    wordnet # offline word definitions
+    wiremix # pipewire mixer
 
     # creative
-    godot
-    blender
-    kdePackages.kdenlive
+    # godot # game engine
+    # blender # modelling and animation
+    # kdePackages.kdenlive # video editor
+
+    ## graphics
     krita
-    audacity
     gimp
-    openutau # open singing synth, supports DiffSinger
     inkscape
+
+    # # sound / music
+    # audacity
+    # openutau # open singing synth, supports DiffSinger
+    # vmpk # play piano (and more) with a simple qwerty keyboard
+    # fluidsynth # real instrument samples
+    # ardour # DAW (digital audio workstation)
+    # lmms # another DAW, can't record external
+    # zynaddsubfx # - foss synthesizer
+    # qpwgraph # pipewire graph
 
     # media
     zathura # pdf reader
     vimiv-qt # vim-like image viewer
-    libreoffice-stable
+    libreoffice
     playerctl # required by multimedia key bindings
     mpc
     rmpc
+    # pavucontrol
+    wiremix
     imagemagick
 
-    pavucontrol
     gnome-clocks
     # proton-vpn
     keepassxc
@@ -108,6 +127,9 @@ in {
   programs.mpv = {
     enable = true;
     scripts = [ pkgs.mpvScripts.mpris ];
+    # TODO:
+    # - move to dot_config
+    # - youtube profile: 1080p, subs (ytdl flag)
     config = {
       save-position-on-quit = true;
     };
@@ -115,10 +137,10 @@ in {
 
   services.hypridle.enable = true;
 
-  programs.direnv = {
-    enable = true;
-    # nix-direnv.enable = true;
-  };
+  # programs.direnv = {
+  #   enable = true;
+  #   # nix-direnv.enable = true;
+  # };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

@@ -2,15 +2,19 @@
 {
   home.packages = with pkgs; [
     # dev
-    python313Packages.ipython
-    uv # python
     cloc # count lines of code
-    nushell # for scripting
+
+    # global python for experimentation.
+    (python3.withPackages (pp: [
+      pp.pygame-ce
+      pp.requests
+      pp.matplotlib
+      pp.pandas
+    ]))
 
     ncdu # TUI disk usage
     tree
     file
-    eza # ls alternative
     sshfs # mount over ssh
     trash-cli # use `trash` instead of `rm`
 
@@ -19,7 +23,6 @@
     libqalculate # provides qalc (calculator)
     khal # calendar
     python313Packages.qrcode # qr "some text"
-    zellij # tmux alternative, don't really use it
     tealdeer # `tldr`, useful examples
 
     # fun stuff
@@ -32,6 +35,8 @@
     nmap
     gocryptfs # encrypted directories
   ];
+
+  programs.eza.enable = true;
 
   programs.tmux = {
     enable = true;
@@ -56,7 +61,13 @@
     '';
   };
 
+  programs.nushell = {
+    enable = true;
+    settings.show_banner = false;
+  };
+
   programs.bash.enable = true;
+
   programs.starship = {
     enable = true;
     settings = {
@@ -67,6 +78,7 @@
   programs.yazi = {
     enable = true;
     enableBashIntegration = config.programs.bash.enable;
+    enableNushellIntegration = config.programs.nushell.enable;
     # allows to "cd" visually! been wanting this for years
     shellWrapperName = "y";
   };
@@ -80,7 +92,7 @@
     sideloadInitLua = true;
     extraPackages = with pkgs; [
       tree-sitter
-      fd
+      fd ripgrep
       basedpyright # python LS
       clang-tools # clangd
       lua-language-server
@@ -90,6 +102,8 @@
       kdePackages.qtdeclarative # for QML LS
       astro-language-server
       nil # nix ls
+      nodejs-slim
+      sqlite
     ];
   };
 

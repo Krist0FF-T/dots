@@ -3,9 +3,12 @@
 require("binds")
 
 -- TODO:
--- - focus mode toggle
--- - some animations?
+-- - focus mode toggle keybind
 -- - groups?
+-- - single-monitor - only external if connected
+
+local FOCUS = true
+
 -- special workspaces
 
 local function mkSpecial(name, bind, command, window_size)
@@ -58,10 +61,11 @@ hl.monitor({
 })
 
 -- Environment variables -------------------------------------------------------
+-- TODO: move out most of this
 
 -- # theming
 hl.env("XCURSOR_SIZE", "24")
-hl.env("XCURSOR_SIZE", "Adwaita")
+hl.env("XCURSOR_THEME", "Adwaita")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
@@ -76,38 +80,37 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 
--- -- Nvidia stuff
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
--- hl.env("LIBVA_DRIVER_NAME", "iDH")
-hl.env("GBM_BACKEND", "nvidia-drm")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
-hl.env("NVD_BACKEND", "direct")
+-- -- -- Nvidia stuff
+-- hl.env("LIBVA_DRIVER_NAME", "nvidia")
+-- hl.env("GBM_BACKEND", "nvidia-drm")
+-- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+-- hl.env("NVD_BACKEND", "direct")
 
 -- Autostart
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprpaper") -- wallpaper daemon
-  hl.exec_cmd("qs") -- quickshell - custom widgets
-  hl.exec_cmd("waybar") -- TODO: custom quickshell bar
-  -- TODO: switch to gammastep for automatic temperature based on sun position
-  hl.exec_cmd("hyprsunset")
-  hl.exec_cmd("fcitx5") -- for different writing systems (jp, zh, ru)
-  hl.exec_cmd("nm-applet")
-  hl.exec_cmd("dunst") -- notification daemon - TODO: custom in quickshell
-	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-	hl.exec_cmd("systemctl --user start hyprpolkitagent") -- elevated prileges
+    hl.exec_cmd("hyprpaper") -- wallpaper daemon
+    hl.exec_cmd("qs") -- quickshell - custom widgets
+    -- hl.exec_cmd("waybar") -- TODO: custom quickshell bar
+    -- TODO: switch to gammastep for automatic temperature based on sun position
+    hl.exec_cmd("hyprsunset")
+    hl.exec_cmd("fcitx5") -- for different writing systems (jp, zh, ru)
+    -- hl.exec_cmd("nm-applet")
+    hl.exec_cmd("dunst") -- notification daemon - TODO: custom in quickshell (low priority)
+    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent") -- elevated prileges
     hl.exec_cmd("aw-server")
     hl.exec_cmd("awatcher")
 end)
 
 hl.config({ general = {
-    -- TODO: 0 if FOCUS
-    gaps_in = 10,
-    gaps_out = 20,
+    gaps_in = FOCUS and 0 or 10,
+    gaps_out = FOCUS and 0 or 20,
 
     border_size = 2,
-    -- TODO: colors
-    -- col.active_border = $c_border_active
-    -- col.inactive_border = $c_border_inactive
+    col = {
+        active_border = "#ffffff60",
+        inactive_border = "#00000000",
+    },
 
     layout = "dwindle",
 }})
@@ -118,13 +121,16 @@ hl.config({ dwindle = {
 }})
 
 hl.config({ decoration = {
-    -- TODO: 0 if FOCUS
-    rounding = 10,
-    active_opacity = 1.0,
-    inactive_opacity = 0.95,
+    rounding = FOCUS and 0 or 10,
+
+    dim_inactive = true,
+    dim_strength = 0.1,
+
+    -- active_opacity = 1.0,
+    -- inactive_opacity = 0.8,
     blur = {
-        enabled = true,
-        size = 5,
+        enabled = not FOCUS,
+        size = 8,
         passes = 3,
         vibrancy = 0.5,
     },
@@ -133,6 +139,7 @@ hl.config({ decoration = {
         enabled = true,
         -- enabled = false,
         range = 10,
+        color = "#000000"
     },
 }})
 
@@ -160,13 +167,12 @@ hl.config({
     input = {
         kb_layout = "hu",
         repeat_rate = 32,
-        -- kb_options = "caps:swapescape", -- hard to get used to
+        kb_options = "caps:escape",
         repeat_delay = 250,
 
         touchpad = {
-          natural_scroll = true,
-          -- TODO: true if in focus mode
-          disable_while_typing = false
+            natural_scroll = true,
+            disable_while_typing = false -- FOCUS
         },
     }
 })
@@ -182,12 +188,8 @@ hl.window_rule({
 
 hl.window_rule({
     match = { class = ".*mpv.*" },
-    content = "none"
-})
-
-hl.workspace_rule({
-    workspace = "special:magic",
-    on_created_empty = "foot btop"
+    content = "none",
+    border_color = "#00f090",
 })
 
 -- # windowrulev2 = bordercolor rgb(ff0000), xwayland:1

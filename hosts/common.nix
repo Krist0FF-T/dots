@@ -9,7 +9,8 @@
   };
 
   programs.nix-ld.enable = true;
-  programs.obs-studio.enable = true;
+  # programs.obs-studio.enable = true;
+  programs.gpu-screen-recorder.enable = true;
 
   programs.hyprland.enable = true;
 
@@ -17,18 +18,20 @@
     enable = true;
     plugins = [ pkgs.thunar-archive-plugin ];
   };
-  services.tumbler.enable = true;
+  # services.tumbler.enable = true; # thumbnailer
   services.gvfs.enable = true;
 
   environment.systemPackages = with pkgs; [
-    vim
-    htop btop
+    waypipe
+    gpu-screen-recorder-gtk
+    tmux
+    neovim
+    btop
     git
     wget
     gcc
     zip unzip
     fzf
-    ripgrep
     killall
     usbutils # lsusb
   ];
@@ -88,7 +91,6 @@
   };
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -96,20 +98,14 @@
     pulse.enable = true;
   };
 
+  services.tailscale.enable = true;
   networking = {
     # Enable networking
     networkmanager.enable = true;
     wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Open ports in the firewall.
     firewall.allowedTCPPorts = [ 4321 8080 443 80 ];
     # firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # firewall.enable = false;
   };
 
   services.gnome.gnome-keyring.enable = true;
@@ -129,6 +125,7 @@
       gutenprint # fallback
     ];
   };
+
   hardware.bluetooth.enable = true;
 
   services.logind.settings.Login = {
@@ -147,7 +144,6 @@
   in {
     enable = true;
     settings = {
-      terminal.vt = 1;
       default_session = session;
       initial_session = session;
     };

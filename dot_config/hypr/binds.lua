@@ -12,14 +12,15 @@ hl.bind(mod .. " + SHIFT + RETURN", hl.dsp.exec_cmd("foot qalc"))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd("foot yazi"))
 hl.bind(mod .. " + SHIFT + E", hl.dsp.exec_cmd("thunar"))
 hl.bind(mod .. " + W", hl.dsp.exec_cmd("firefox -p"))
-hl.bind(mod .. " + M", hl.dsp.exec_cmd("mpv $(wl-paste) --ytdl-format=\"bv[height<=1080]+ba\""))
-hl.bind(mod .. " + B", hl.dsp.exec_cmd("qs ipc call bar toggle"))
+hl.bind(mod .. " + M", hl.dsp.exec_cmd("foot mpv $(wl-paste)"))
+hl.bind(mod .. " + B", hl.dsp.exec_cmd("qs ipc call osd toggle"))
 hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd("pkill waybar || waybar"))
 hl.bind(mod .. " + R", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
 hl.bind(mod .. " + C", hl.dsp.exec_cmd("pkill hyprpicker || hyprpicker -a"))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("pkill hyprpaper || hyprpaper"))
 
 -- toggle internal monitor
+-- TODO: disable automatically when an external monitor is connected
 hl.bind(mod .. " + CONTROL + M", function()
     local mon_name = "eDP-1"
     local enabled = (hl.get_monitor(mon_name) ~= nil)
@@ -27,10 +28,11 @@ hl.bind(mod .. " + CONTROL + M", function()
         output = mon_name,
         disabled = enabled
     })
-end)
+end, {locked = true})
 
 -- window management
 hl.bind(mod .. " + SHIFT + C", hl.dsp.window.close(), { repeating = true })
+hl.bind(mod .. " + CONTROL + C", hl.dsp.window.kill())
 hl.bind(mod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 hl.bind(mod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
@@ -58,7 +60,8 @@ hl.bind(mod .. " + G",         hl.dsp.exec_cmd("grim                 && notify-s
 hl.bind(mod .. " + SHIFT + G", hl.dsp.exec_cmd("grim -g \"$(slurp)\" && notify-send 'screenshot taken' 'selection'"))
 
 -- switch workspaces
-local workspace_keys = {"1", "2", "3", "4", "U", "I", "O", "P"}
+-- (do I really need 10?, + specials)
+local workspace_keys = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
 for i, key in ipairs(workspace_keys) do
     hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = i, on_current_monitor = true }))
     hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
