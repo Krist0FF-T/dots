@@ -101,11 +101,6 @@ in {
     };
   };
 
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
-
   services.hypridle.enable = true;
 
   programs.direnv = {

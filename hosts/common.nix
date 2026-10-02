@@ -20,8 +20,6 @@
   services.tumbler.enable = true;
   services.gvfs.enable = true;
 
-  programs.kdeconnect.enable = true;
-
   environment.systemPackages = with pkgs; [
     vim
     htop btop
