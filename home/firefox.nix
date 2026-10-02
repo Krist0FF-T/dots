@@ -18,13 +18,6 @@
           private_browsing = true;
         };
 
-        # Privacy Badger
-        "jid1-MnnxcxisBPnSXQ@jetpack" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
-          installation_mode = "normal_installed";
-          default_area = "menupanel";
-        };
-
         # Dark Reader
         "addon@darkreader.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
@@ -37,20 +30,6 @@
         "myallychou@gmail.com" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-recommended-videos/latest.xpi";
           installation_mode = "force_installed";
-          default_area = "menupanel";
-        };
-
-        # LibRedirect
-        "7esoorv3@alefvanoon.anonaddy.me" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
-          installation_mode = "normal_installed";
-          default_area = "menupanel";
-        };
-
-        # Sidebery
-        "{3c078156-979c-498b-8990-85f7987dd929}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sidebery/latest.xpi";
-          installation_mode = "normal_installed";
           default_area = "menupanel";
         };
 
@@ -143,7 +122,7 @@
         # home page and new tab page
         "browser.startup.homepage" = "file://${config.xdg.userDirs.projects}/startpage/index.html";
         # TODO: custom new tab page
-        "browser.newtabpage.enabled" = false; 
+        "browser.newtabpage.enabled" = false;
 
         # graphics: hardware acceleration
         "gfx.webrender.all" = true;
