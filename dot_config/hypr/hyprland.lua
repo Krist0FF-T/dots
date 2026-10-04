@@ -100,6 +100,11 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprpolkitagent") -- elevated prileges
     hl.exec_cmd("aw-server")
     hl.exec_cmd("awatcher")
+
+    hl.exec_cmd("firefox", { workspace = 1 })
+    hl.exec_cmd("foot", { workspace = 2 })
+    hl.exec_cmd("foot rmpc", { workspace = 10 })
+    hl.exec_cmd("gnome-pomodoro", { workspace = 10 })
 end)
 
 hl.config({ general = {
