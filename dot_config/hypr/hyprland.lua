@@ -58,7 +58,20 @@ hl.monitor({
     mode     = "preferred",
     position = "auto-center-left",
     scale    = 1,
+    disabled = hl.get_monitor("HDMI-A-1") ~= nil
 })
+
+hl.on("monitor.added", function(mon)
+    if mon.name == "HDMI-A-1" then
+        hl.monitor({ output="eDP-1", disabled = true })
+    end
+end)
+
+hl.on("monitor.removed", function(mon)
+    if mon.name == "HDMI-A-1" then
+        hl.monitor({ output="eDP-1", disabled = false })
+    end
+end)
 
 -- Environment variables -------------------------------------------------------
 -- TODO: move out most of this
