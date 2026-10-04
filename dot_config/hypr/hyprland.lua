@@ -80,12 +80,6 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 
--- -- -- Nvidia stuff
--- hl.env("LIBVA_DRIVER_NAME", "nvidia")
--- hl.env("GBM_BACKEND", "nvidia-drm")
--- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
--- hl.env("NVD_BACKEND", "direct")
-
 -- Autostart
 hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper") -- wallpaper daemon
