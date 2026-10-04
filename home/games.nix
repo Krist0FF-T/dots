@@ -16,7 +16,7 @@
     # mindustry
 
     # veloren
-    # supertuxkart
+    supertuxkart
     supertux
     # the-powder-toy # (really cool 2d sandbox)
 

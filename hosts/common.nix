@@ -105,7 +105,9 @@
     wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     firewall.allowedTCPPorts = [ 4321 8080 443 80 ];
-    # firewall.allowedUDPPorts = [ ... ];
+    firewall.allowedUDPPorts = [
+      2759 # SuperTuxKart
+    ];
   };
 
   services.gnome.gnome-keyring.enable = true;
