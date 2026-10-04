@@ -42,7 +42,7 @@ in {
     "foot".source = ln_conf "foot";
     "waybar".source = ln_conf "waybar";
     "matugen".source = ln_conf "matugen";
-    "mpv/input.conf".source = ln_conf "mpv_input.conf";
+    "mpv".source = ln_conf "mpv";
   };
 
   # Add stuff for your user as you see fit:
@@ -84,6 +84,7 @@ in {
     # media
     zathura # pdf reader
     vimiv-qt # vim-like image viewer
+    (mpv.override {scripts = [mpvScripts.mpris];})
     libreoffice
     playerctl # required by multimedia key bindings
     mpc
@@ -122,17 +123,6 @@ in {
             name "My PipeWire Output"
         }
     '';
-  };
-
-  programs.mpv = {
-    enable = true;
-    scripts = [ pkgs.mpvScripts.mpris ];
-    # TODO:
-    # - move to dot_config
-    # - youtube profile: 1080p, subs (ytdl flag)
-    config = {
-      save-position-on-quit = true;
-    };
   };
 
   services.hypridle.enable = true;
