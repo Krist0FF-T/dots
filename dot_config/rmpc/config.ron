@@ -1,0 +1,9 @@
+(
+    keybinds: (
+        global: {
+            "Y": ExternalCommand(
+                command: ["~/.config/rmpc/search_yt.sh"],
+            ),
+        }
+    )
+)

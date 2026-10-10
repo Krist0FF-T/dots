@@ -15,6 +15,7 @@
     ncdu # TUI disk usage
     tree
     file
+    jq # json parser (used by scripts like search_yt.sh)
     sshfs # mount over ssh
     trash-cli # use `trash` instead of `rm`
 

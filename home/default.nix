@@ -43,6 +43,7 @@ in {
     "waybar".source = ln_conf "waybar";
     "matugen".source = ln_conf "matugen";
     "mpv".source = ln_conf "mpv";
+    "rmpc".source = ln_conf "rmpc";
   };
 
   # Add stuff for your user as you see fit:
