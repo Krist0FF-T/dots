@@ -22,8 +22,7 @@
     yt-dlp
     ffmpeg
     libqalculate # provides qalc (calculator)
-    khal # calendar
-    python313Packages.qrcode # qr "some text"
+    python314Packages.qrcode # qr "some text"
     tealdeer # `tldr`, useful examples
 
     # fun stuff
@@ -37,11 +36,8 @@
     gocryptfs # encrypted directories
   ];
 
-  programs.eza.enable = true;
-
   programs.tmux = {
     enable = true;
-    # shell = "${pkgs.nushell}/bin/nu";
     keyMode = "vi"; # vim-like keybinds!
     escapeTime = 0;
     historyLimit = 9999;
@@ -62,24 +58,16 @@
     '';
   };
 
-  programs.nushell = {
-    enable = true;
-    settings.show_banner = false;
-  };
-
   programs.bash.enable = true;
 
   programs.starship = {
     enable = true;
-    settings = {
-      battery.disabled = true;
-    };
+    settings.battery.disabled = true;
   };
 
   programs.yazi = {
     enable = true;
     enableBashIntegration = config.programs.bash.enable;
-    enableNushellIntegration = config.programs.nushell.enable;
     # allows to "cd" visually! been wanting this for years
     shellWrapperName = "y";
   };
@@ -106,35 +94,5 @@
       nodejs-slim
       sqlite
     ];
-  };
-
-  programs.helix = {
-    enable = true;
-
-    # loosely based on fufexan's
-    settings = {
-      theme = "monokai";
-      editor = {
-        color-modes = true;
-        # ..
-        cursorline = true;
-        cursor-shape = {
-          insert = "bar";
-          normal = "block";
-          select = "underline";
-        };
-        # ..
-        line-number = "relative";
-        # ..
-        soft-wrap.enable = true;
-        statusline.center = [ "position-percentage" ];
-        trim-final-newlines = true;
-        trim-trailing-whitespace = true;
-        whitespace.characters = {
-          newline = "↴";
-          tab = "⇥";
-        };
-      };
-    };
   };
 }
