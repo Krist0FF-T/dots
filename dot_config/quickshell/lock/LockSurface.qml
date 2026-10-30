@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import QtQuick.Controls.Fusion
 import qs.services
 import qs.widgets
@@ -19,20 +20,19 @@ Rectangle {
         font.pointSize: 120
     }
 
-    PomodoroWidget {
-        id: timerText
-        anchors.bottom: clock.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        font.pixelSize: 32
-        visible: true
-    }
-
     StyledText {
-        // anchors.bottom: timerText.top
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: context.currentText
+        text: root.context.currentText
+    }
+
+    RowLayout {
+        anchors.top: root.top
+        anchors.right: root.right
+        spacing: 12
+        AudioVolume {}
+        Battery { visible: true }
+        PomodoroWidget { visible: true }
     }
 
     TextField {
@@ -47,7 +47,6 @@ Rectangle {
         font.pointSize: 18
         horizontalAlignment: Text.AlignHCenter
         color: root.colors.accent
-        // color: Pomodoro.timer == 0 ? root.colors.accent : "#ff0000"
         width: clock.width * 0.8
     }
 }
