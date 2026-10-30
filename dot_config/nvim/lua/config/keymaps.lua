@@ -32,11 +32,11 @@ vim.keymap.set("n", "<leader>u", require('undotree').toggle)
 
 -- vim.keymap.set({ "n", "v" }, "<leader>a", vim.cmd.CodeCompanionChat)
 
--- tmux
-vim.keymap.set({ "n", "i", "v" }, "<C-h>", vim.cmd.TmuxNavigateLeft)
-vim.keymap.set({ "n", "i", "v" }, "<C-j>", vim.cmd.TmuxNavigateDown)
-vim.keymap.set({ "n", "i", "v" }, "<C-k>", vim.cmd.TmuxNavigateUp)
-vim.keymap.set({ "n", "i", "v" }, "<C-l>", vim.cmd.TmuxNavigateRight)
+-- window switching
+vim.keymap.set({ "n", "i", "v" }, "<C-h>", "<C-w>h")
+vim.keymap.set({ "n", "i", "v" }, "<C-j>", "<C-w>j")
+vim.keymap.set({ "n", "i", "v" }, "<C-k>", "<C-w>k")
+vim.keymap.set({ "n", "i", "v" }, "<C-l>", "<C-w>l")
 
 -- buffers
 vim.keymap.set("n", "H", vim.cmd.bprev)
