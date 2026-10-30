@@ -4,30 +4,17 @@ import qs.widgets
 import qs.services
 
 StyledText {
+    id: root
+    text: `bat ${percentage}%`
+
     readonly property UPowerDevice device: UPower.displayDevice
-    visible: {
-        if (device.state == UPowerDeviceState.Discharging) {
-            return (device.percentage < 0.30) // || device.timeToEmpty < 3600) // 1h
-        }
-        // if (device.state == UPowerDeviceState.Charging) {
-        //     return device.percentage > 0.80
-        // }
-        return false
-    }
-    text: {
-        const percentage = Math.round(device.percentage * 100)
-        let state = "?"
-        if (device.state == UPowerDeviceState.Charging) {
-            const total_min = Math.round(device.timeToFull / 60)
-            const hour = Math.floor(total_min / 60)
-            const min = total_min % 60
-            state = `${hour}:${min}^`
-        } else if (device.state == UPowerDeviceState.Discharging) {
-            const total_min = Math.round(device.timeToEmpty / 60)
-            const hour = Math.floor(total_min / 60)
-            const min = total_min % 60
-            state = `${hour}:${min}v`
-        }
-        return `bat ${percentage}% ${state}`
-    }
+    readonly property int percentage: Math.round(device.percentage * 100)
+
+    visible: (
+        DateTime.date.getMinutes() % 5 == 0 &&
+        DateTime.date.getSeconds() < 5 && (
+            (device.state == UPowerDeviceState.Discharging && percentage <= 30)
+            || (device.state == UPowerDeviceState.Charging && percentage >= 80)
+        )
+    )
 }
